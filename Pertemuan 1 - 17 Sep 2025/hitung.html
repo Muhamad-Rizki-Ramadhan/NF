@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Menghitung Luas Bangun Datar</h2>
+        <form id="formLuas">
+            <h3>Persegi Panjang</h3>
+            <input type="number" id="panjang">
+            <input type="number" id="lebar">
+            <h3>Bujur Sangkar</h3>
+            <input type="number" id="sisi">
+            <h3>Segitiga</h3>
+            <input type="number" id="alas">
+            <input type="number" id="tinggi">
+            <br>
+            <br>    
+            <button type="submit">Hitung Luas</button>
+        </form>
+        <br>
+        <br>
+        <div id="hasil"></div>
+    </div>
+
+    <script>
+        // Menghitung luas persegi panjang, Bujur Sangkar dan Segitigas
+        function luasPersegiPanjang(panjang, lebar) {
+            return panjang * lebar;
+        }
+        function luasBujurSangkar(sisi) {
+            return sisi * sisi;
+        }
+
+        function luasSegitiga(alas, tinggi) {
+            return 0.5 * alas * tinggi;
+        }
+
+        // form nya
+        document.getElementById("formLuas").addEventListener("submit", function(e) {
+            e.preventDefault(); // biar halaman ga ke reload dan hasil ga ialng
+            // kita ambil nilai input
+            let panjang = parseFloat(document.getElementById("panjang").value);
+            let lebar = parseFloat(document.getElementById("lebar").value);
+            let sisi = parseFloat(document.getElementById("sisi").value);
+            let alas = parseFloat(document.getElementById("alas").value);
+            let tinggi = parseFloat(document.getElementById("tinggi").value);
+
+            // menghitung Luas
+            let Lpp = luasPersegiPanjang(panjang, lebar);
+            let Lbs = luasBujurSangkar(sisi);
+            let lsegitiga = luasSegitiga(alas, tinggi);
+
+            // Menampilkan hasil
+            document.getElementById("hasil").innerHTML =
+                "Luas Persegi Panjang: " + Lpp + "<br>" +
+                "Luas Bujur Sangkar: " + Lbs + "<br>" +
+                "Luas Segitiga: " + lsegitiga;
+        }
+    );
+    </script>
+</body>
+</html>
