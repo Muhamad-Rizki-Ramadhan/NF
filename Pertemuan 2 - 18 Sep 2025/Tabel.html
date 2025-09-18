@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Anggota</title>
+</head>
+<body>
+    <table cellspacing="1"  cellpadding="5" align="center" width="1000" border="1">
+        <center>
+            <h1>Tabel Anggota</h1>
+        </center>
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Umur</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th>Gaji Pokok</th>
+                <th>Tunjangan Jabatan</th>
+                <th>BPJS</th>
+                <th>Tunjangan Keluarga</th>
+            </tr>
+        </thead>
+        <tbody id="Anggota"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">Total Gaji</td>
+                <td id="Total"></td>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+        let anggota = [
+            { nama: "dodi prayodi", umur: 25, jabatan: "manajer", status: "menikah" },
+        ]
+        let totalgaji = 0;
+        let tbody = "";
+
+        anggota.forEach(x => {
+            let gajipokok = 0;
+            if(x.jabatan.toLowerCase() === "manajer"){
+                gajipokok = 15000000;
+            } else if (x.jabatan.toLowerCase() === "asisten manajer") {
+                gajipokok = 10000000;
+            } else if (x.jabatan.toLowerCase() === "staff") {
+                gajipokok = 5000000;
+            }
+
+            let tunjanganjabatan = 0.15 * gajipokok;
+            let bpjs = 0.1 * gajipokok;
+            let tunjangankeluarga = (x.status.toLowerCase() === "menikah") ? 0.2 * gajipokok : 0;
+
+            totalgaji = gajipokok + tunjanganjabatan + bpjs + tunjangankeluarga;
+
+            tbody += `
+            <tr>
+                <td>${x.nama}</td>
+                <td>${x.umur}</td>
+                <td>${x.jabatan}</td>
+                <td>${x.status}</td>
+                <td>Rp ${gajipokok.toLocaleString("id-ID")}</td>
+                <td>Rp ${tunjanganjabatan.toLocaleString("id-ID")}</td>
+                <td>Rp ${bpjs.toLocaleString("id-ID")}</td>
+                <td>Rp ${tunjangankeluarga.toLocaleString("id-ID")}</td>
+            </tr>
+            `;
+        }
+    );
+    document.getElementById("Anggota").innerHTML = tbody;
+    document.getElementById("Total").innerHTML = `Rp ${totalgaji.toLocaleString("id-ID")}`;
+
+    </script>
+</body>
+</html>
