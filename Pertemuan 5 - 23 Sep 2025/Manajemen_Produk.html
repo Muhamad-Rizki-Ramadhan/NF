@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Produk</title>
+</head>
+<body>
+    <h1>Manajemen Produk</h1>
+    <form id="form">
+        <input id="nama" type="text" placeholder="Nama" required><br><br>
+        <input id="harga" type="number" placeholder="Harga" required min="0"><br><br>
+        <input id="stok" type="number" placeholder="Stok" required min="0"><br><br>
+        <button type="submit">Tambah</button>
+        <button type="button" id="show">Tampilin</button><br><br>
+    </form>
+
+    <div id="produk"></div>
+    <script src="script.js"></script>
+</body>
+</html>
