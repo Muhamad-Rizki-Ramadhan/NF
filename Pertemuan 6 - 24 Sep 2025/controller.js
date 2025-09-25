@@ -1,5 +1,3 @@
-let data = require('./data.js');
-
 function tampil() {
     console.log("=================== Daftar =====================");
     data.map((item, index) => {

@@ -11,4 +11,3 @@ let data = [
     { nama: "Lia", umur: 23, alamat: "Cileungsi", email: "lia@mail.com" }
 ];
 
-module.exports = data;
